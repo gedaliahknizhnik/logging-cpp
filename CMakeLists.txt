@@ -17,8 +17,10 @@ add_library(logger_lib src/logger.cpp include/logger.hpp)
 install(TARGETS logger_lib
          ARCHIVE DESTINATION lib
          LIBRARY DESTINATION lib
-         RUNTIME DESTINATION bin    
-         PUBLIC_HEADER DESTINATION include)
+         RUNTIME DESTINATION bin) 
+
+install(DIRECTORY include/ 
+  DESTINATION include)
 
 # EXAMPLES ####################################################################
 
