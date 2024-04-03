@@ -19,7 +19,7 @@ install(TARGETS logger_lib
          LIBRARY DESTINATION lib
          RUNTIME DESTINATION bin) 
 
-install(DIRECTORY include/ 
+       install(FILES include/logger.hpp 
   DESTINATION include)
 
 # EXAMPLES ####################################################################
