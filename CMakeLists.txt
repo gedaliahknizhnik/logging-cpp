@@ -14,6 +14,13 @@ include_directories(include)
 
 add_library(logger_lib src/logger.cpp include/logger.hpp)
 
+install(TARGETS logger_lib
+    LIBRARY DESTINATION lib COMPONENT Runtime
+    ARCHIVE DESTINATION lib COMPONENT Development
+    RUNTIME DESTINATION bin COMPONENT Runtime
+    PUBLIC_HEADER DESTINATION include COMPONENT Development
+    BUNDLE DESTINATION bin COMPONENT Runtime
+)
 # EXAMPLES ####################################################################
 
 add_executable(example src/example_logger.cpp)
