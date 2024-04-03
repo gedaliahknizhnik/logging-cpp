@@ -19,8 +19,10 @@ install(TARGETS logger_lib
          LIBRARY DESTINATION lib
          RUNTIME DESTINATION bin) 
 
-       install(FILES include/logger.hpp 
-  DESTINATION include)
+INSTALL(
+    DIRECTORY ${CMAKE_SOURCE_DIR}/include/
+    DESTINATION include
+    FILES_MATCHING PATTERN "*.h*")
 
 # EXAMPLES ####################################################################
 
