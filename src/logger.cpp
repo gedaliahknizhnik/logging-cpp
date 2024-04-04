@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <cctype>
+#include <iomanip>
 #include <iostream>
 #include <string>
 
@@ -29,21 +30,28 @@ LogLevel StringToLogLevel(const std::string& log_level) {
 const std::string LogLevelToString(const LogLevel log_level) {
   switch (log_level) {
     case LogLevel::DEBUG:
-      return "DEBUG";
+      return "[DEBUG]";
     case LogLevel::INFO:
-      return "INFO";
+      return "[INFO ]";
     case LogLevel::WARNING:
-      return "WARNING";
+      return "[WARN ]";
     case LogLevel::ERROR:
-      return "ERROR";
+      return "[ERROR]";
     case LogLevel::FATAL:
-      return "FATAL";
+      return "[FATAL]";
     case LogLevel::NOT_A_LEVEL:
     default:
       return "UNKNOWN";
   }
 }
 
+/**
+ * @brief Convert a LogLevel to a color string, usefull for printing the
+ * LogLevel in color.
+ *
+ * @param log_level - [LogLevel] The LogLevel to convert
+ * @return [std::string] The converted color string
+ */
 const std::string LogLevelColorString(const LogLevel log_level) {
   switch (log_level) {
     case LogLevel::DEBUG:
@@ -70,8 +78,10 @@ void Logger::Log(const LogLevel log_level, const std::string& message) {
   if (log_level < log_level_) {
     return;
   }
-  std::cout << LogLevelColorString(log_level) << "["
-            << LogLevelToString(log_level) << "] " << message << "\033[0m"
+  std::cout << LogLevelColorString(log_level) << LogLevelToString(log_level)
+            << "[" << std::setw(TIMESTAMP_WIDTH) << std::fixed
+            << std::setprecision(TIMESTAMP_PRECS) << timestamp_ms() << "] "
+            << message << "\033[0m"
             << "\n";
 }
 

@@ -1,5 +1,5 @@
-logger (0.1.0) jammy; urgency=medium
+logger (1.0.0) jammy; urgency=medium
 
   * Basic logging functionality.
 
- -- Gedaliah Knizhnik <gedaliah.knizhnik@gmail.com>  Tue, 02 Apr 2024 22:23:25 -0400
+ -- Gedaliah Knizhnik <gedaliah.knizhnik@gmail.com>  Wed, 03 Apr 2024 22:03:59 -0400

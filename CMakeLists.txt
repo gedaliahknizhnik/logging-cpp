@@ -14,7 +14,23 @@ include_directories(include)
 
 add_library(logger_lib src/logger.cpp include/logger.hpp)
 
+install(TARGETS logger_lib
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+)
+
+install(
+    DIRECTORY ${CMAKE_SOURCE_DIR}/include/
+    DESTINATION include
+    FILES_MATCHING PATTERN "*.h*"
+)
+
 # EXAMPLES ####################################################################
 
-add_executable(example src/example_logger.cpp)
-target_link_libraries(example logger_lib)
+if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+
+  add_executable(example src/example_logger.cpp)
+  target_link_libraries(example logger_lib)
+
+endif()
